@@ -4,10 +4,11 @@
     --accent-color: #4CAF50;
     --button-bg: #333333;
     --button-text: #ffffff;
+    --ring-bg: #333333;
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Roboto', sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
     margin: 0;
@@ -16,12 +17,14 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {
     text-align: center;
     padding: 2rem;
+    max-width: 600px;
+    width: 100%;
 }
 
 header {
@@ -31,6 +34,11 @@ header {
     margin-bottom: 2rem;
 }
 
+h1 {
+    font-size: 2.5rem;
+    margin: 0;
+}
+
 .stopwatch {
     position: relative;
     width: 300px;
@@ -38,16 +46,10 @@ header {
     margin: 0 auto 2rem;
 }
 
-.progress-ring {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 10px solid #333;
-    border-top: 10px solid var(--accent-color);
-    border-radius: 50%;
-    transition: all 0.3s ease;
+.progress-ring__circle {
+    transition: stroke-dashoffset 0.35s;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
 }
 
 .time-display {
@@ -63,15 +65,22 @@ header {
     background-color: var(--button-bg);
     color: var(--button-text);
     border: none;
-    padding: 10px 20px;
+    padding: 12px 24px;
     margin: 0 5px;
-    border-radius: 5px;
+    border-radius: 25px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 .controls button:hover {
     background-color: var(--accent-color);
+}
+
+.controls button:active {
+    transform: scale(0.95);
 }
 
 .lap-times {
@@ -90,15 +99,51 @@ header {
     margin: 5px 0;
     padding: 10px;
     border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#themeToggle {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+#exportCSV {
+    margin-top: 1rem;
+    background-color: var(--accent-color);
+    color: var(--button-text);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#exportCSV:hover {
+    background-color: #45a049;
+}
+
+.light-theme {
+    --bg-color: #f0f0f0;
+    --text-color: #333333;
+    --button-bg: #dddddd;
+    --button-text: #333333;
+    --ring-bg: #dddddd;
 }
 
 @media (max-width: 600px) {
     .stopwatch {
-        width: 200px;
-        height: 200px;
+        width: 250px;
+        height: 250px;
     }
 
     .time-display {
-        font-size: 1.8rem;
+        font-size: 2rem;
+    }
+
+    .controls button {
+        padding: 10px 20px;
     }
 }
