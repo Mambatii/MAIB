@@ -3,35 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Precision Stopwatch</title>
+    <title>Shared Time Elapsed</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Precision Stopwatch</h1>
+            <h1>Shared Time Elapsed</h1>
             <button id="themeToggle" aria-label="Toggle theme">🌓</button>
         </header>
         <main>
-            <div class="stopwatch">
-                <svg class="progress-ring" width="300" height="300">
-                    <circle class="progress-ring__circle" stroke="#4CAF50" stroke-width="10" fill="transparent" r="145" cx="150" cy="150"/>
-                </svg>
-                <div class="time-display">00:00:00.00</div>
+            <div class="time-display">
+                <div id="days">00</div>
+                <div id="hours">00</div>
+                <div id="minutes">00</div>
+                <div id="seconds">00</div>
+            </div>
+            <div class="labels">
+                <span>Days</span>
+                <span>Hours</span>
+                <span>Minutes</span>
+                <span>Seconds</span>
             </div>
             <div class="controls">
-                <button id="startStop">Start</button>
-                <button id="lap">Lap</button>
-                <button id="reset">Reset</button>
+                <input type="datetime-local" id="dateTimePicker">
+                <button id="setDateTime">Set New Start Time</button>
             </div>
         </main>
-        <section class="lap-times">
-            <h2>Lap Times</h2>
-            <ul id="lapList"></ul>
-        </section>
-        <button id="exportCSV">Export Laps to CSV</button>
+        <footer>
+            <p>Start time: <span id="startTimeDisplay"></span></p>
+        </footer>
     </div>
+
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+
     <script src="script.js"></script>
 </body>
 </html>
