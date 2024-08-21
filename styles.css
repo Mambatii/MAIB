@@ -2,9 +2,9 @@
     --bg-color: #1a1a1a;
     --text-color: #ffffff;
     --accent-color: #4CAF50;
-    --button-bg: #333333;
-    --button-text: #ffffff;
-    --ring-bg: #333333;
+    --secondary-color: #2196F3;
+    --tertiary-color: #FFC107;
+    --quarternary-color: #9C27B0;
 }
 
 body {
@@ -39,111 +39,93 @@ h1 {
     margin: 0;
 }
 
-.stopwatch {
-    position: relative;
-    width: 300px;
-    height: 300px;
-    margin: 0 auto 2rem;
-}
-
-.progress-ring__circle {
-    transition: stroke-dashoffset 0.35s;
-    transform: rotate(-90deg);
-    transform-origin: 50% 50%;
-}
-
 .time-display {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 2.5rem;
-    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
 }
 
-.controls button {
-    background-color: var(--button-bg);
-    color: var(--button-text);
-    border: none;
-    padding: 12px 24px;
-    margin: 0 5px;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.1s ease;
-    font-size: 1rem;
+.time-display div {
+    font-size: 3rem;
     font-weight: bold;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    width: 22%;
+    box-sizing: border-box;
+}
+
+.time-display div:nth-child(1) { color: var(--accent-color); }
+.time-display div:nth-child(2) { color: var(--secondary-color); }
+.time-display div:nth-child(3) { color: var(--tertiary-color); }
+.time-display div:nth-child(4) { color: var(--quarternary-color); }
+
+.labels {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.labels span {
+    width: 22%;
+    font-size: 0.9rem;
     text-transform: uppercase;
 }
 
-.controls button:hover {
-    background-color: var(--accent-color);
+.controls {
+    margin-bottom: 2rem;
 }
 
-.controls button:active {
-    transform: scale(0.95);
-}
-
-.lap-times {
-    margin-top: 2rem;
-    max-height: 200px;
-    overflow-y: auto;
-}
-
-#lapList {
-    list-style-type: none;
-    padding: 0;
-}
-
-#lapList li {
-    background-color: #333;
-    margin: 5px 0;
-    padding: 10px;
+input[type="datetime-local"] {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    padding: 0.5rem;
     border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
+    color: var(--text-color);
+    margin-right: 0.5rem;
 }
 
-#themeToggle {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
-#exportCSV {
-    margin-top: 1rem;
+button {
     background-color: var(--accent-color);
-    color: var(--button-text);
+    color: var(--text-color);
     border: none;
-    padding: 10px 20px;
+    padding: 0.5rem 1rem;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-#exportCSV:hover {
+button:hover {
     background-color: #45a049;
+}
+
+#themeToggle {
+    background: none;
+    font-size: 1.5rem;
+}
+
+footer {
+    margin-top: 2rem;
+    font-size: 0.9rem;
 }
 
 .light-theme {
     --bg-color: #f0f0f0;
     --text-color: #333333;
-    --button-bg: #dddddd;
-    --button-text: #333333;
-    --ring-bg: #dddddd;
 }
 
 @media (max-width: 600px) {
-    .stopwatch {
-        width: 250px;
-        height: 250px;
-    }
-
-    .time-display {
+    .time-display div {
         font-size: 2rem;
     }
-
-    .controls button {
-        padding: 10px 20px;
+    
+    .controls {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    input[type="datetime-local"] {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
     }
 }
