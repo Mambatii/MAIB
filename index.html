@@ -3,45 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shared Time Elapsed</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Maib</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js" defer></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Shared Time Elapsed</h1>
+            <h1>Last ever</h1>
             <button id="themeToggle" aria-label="Toggle theme">🌓</button>
         </header>
         <main>
-            <div class="time-display">
-                <div id="days">00</div>
-                <div id="hours">00</div>
-                <div id="minutes">00</div>
-                <div id="seconds">00</div>
-            </div>
-            <div class="labels">
-                <span>Days</span>
-                <span>Hours</span>
-                <span>Minutes</span>
-                <span>Seconds</span>
-            </div>
-            <div class="controls">
-                <input type="datetime-local" id="dateTimePicker">
-                <button id="setDateTime">Set New Start Time</button>
-            </div>
+            <section class="clock-container ib-clock">
+                <h2>IB Clock</h2>
+                <div class="time-display">
+                    <div class="time-unit">
+                        <div id="ibDays" class="time-value">00</div>
+                        <div class="time-label">Days</div>
+                    </div>
+                    <div class="time-unit">
+                        <div id="ibHours" class="time-value">00</div>
+                        <div class="time-label">Hours</div>
+                    </div>
+                    <div class="time-unit">
+                        <div id="ibMinutes" class="time-value">00</div>
+                        <div class="time-label">Minutes</div>
+                    </div>
+                    <div class="time-unit">
+                        <div id="ibSeconds" class="time-value">00</div>
+                        <div class="time-label">Seconds</div>
+                    </div>
+                </div>
+                <div class="controls">
+                    <input type="datetime-local" id="ibDateTimePicker" class="hidden">
+                    <button id="ibSetDateTime">Reset</button>
+                </div>
+                <div class="start-time">IB Start time: <span id="ibStartTimeDisplay"></span></div>
+            </section>
+
+            <section class="clock-container ma-clock">
+                <h2>MA Clock</h2>
+                <div class="time-display">
+                    <div class="time-unit">
+                        <div id="maDays" class="time-value">00</div>
+                        <div class="time-label">Days</div>
+                    </div>
+                    <div class="time-unit">
+                        <div id="maHours" class="time-value">00</div>
+                        <div class="time-label">Hours</div>
+                    </div>
+                    <div class="time-unit">
+                        <div id="maMinutes" class="time-value">00</div>
+                        <div class="time-label">Minutes</div>
+                    </div>
+                    <div class="time-unit">
+                        <div id="maSeconds" class="time-value">00</div>
+                        <div class="time-label">Seconds</div>
+                    </div>
+                </div>
+                <div class="controls">
+                    <input type="datetime-local" id="maDateTimePicker" class="hidden">
+                    <button id="maSetDateTime">Reset</button>
+                </div>
+                <div class="start-time">MA Start time: <span id="maStartTimeDisplay"></span></div>
+            </section>
         </main>
         <footer>
-            <p>Start time: <span id="startTimeDisplay"></span></p>
+            <b>&copy; Last ever, Last forever</b>
         </footer>
     </div>
-
-    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
-
-    <!-- Add Firebase products that you want to use -->
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
-
-    <script src="script.js"></script>
 </body>
 </html>
